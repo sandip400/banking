@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            background-color: rgb(78, 70, 52);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #nav-bar {
+            height: 40px;
+            display: flex;
+            justify-content: right;
+            color: white;
+            background-color: black;
+            padding: 0 20px;
+        }
+        #nav-bar div {
+            margin-left: 20px;
+            padding: 10px;
+        }
+        .nav-item:hover {
+            cursor: pointer;
+            background-color: rgb(53, 52, 51);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            flex-wrap: wrap;
+            padding: 20vh;
+        }
+        .button-container .display-button {
+            margin: 10px;
+            padding: 30px;
+            font-size: larger;
+            color: black;
+            background-color: white;
+            border: 3.5px solid brown;
+            border-radius: 10px;
+            width: 40%;
+            height: 16vh;
+            text-align: center;
+        }
+        .display-button:hover {
+            cursor: pointer;
+            background-color: rgb(53, 52, 51);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .button-container .display-button {
+                width: 80%;
+                height: 40%;
+            }
+            #nav-bar {
+                flex-direction: row;
+                text-align: center;
+                margin-right: 5%;
+            }
+            #nav-bar div {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+        }
+        @media (max-width: 492px){
+            .button-container .display-button {
+                font-size: smaller;
+                text-align: left;
+                width: 10vh;
+                height: 7vh;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+    <nav>
+        <div id="nav-bar">
+            <div class="nav-item">Interest</div>
+            <div class="nav-item">Deposit</div>
+            <div class="nav-item">About Us</div>
+            <div class="nav-item">Home</div>
+            <div class="nav-item">Help</div>
+        </div>
+    </nav>
+    <h3>{{contact.username}}</h3>
+    <div class="button-container">
+        <div class="display-button"><a href="display.html">DISPLAY</a></div>
+        <div class="display-button"><a href="transfer.html">TRANSFER</a></div>
+        <div class="display-button"><a href="diposit.html">DIPOSIT</a></div>
+        <div class="display-button"><a href="withdraw.html">WITHDRAW</a></div>
+    </div>
+</form>
+</body>
+</html>

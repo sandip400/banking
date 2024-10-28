@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <style>
+        /* General Body Styling */
+        body {
+            background-image: url("{% static 'online_bank/online.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        /* Responsive Header */
+        header {
+            position: relative;
+            top: 0;
+            height: auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            background-color: black;
+            color: white;
+            text-shadow: 2px 2px 4px cadetblue;
+            font-size: 5vw;
+            margin: 0;
+            padding: 10px;
+            width: fit-content;
+            margin: auto;
+        }
+
+        /* Responsive Div */
+        #div {
+            background-color: rgb(20, 27, 35);
+            border-color: black;
+            border-radius: 10px;
+            border-width: 5px;
+            padding: 18px;            
+            position: relative;
+            top: 15vh;
+            left: -5vh;
+            text-align: center;
+            width: 20vw;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .form-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            position: relative;
+            top: 12vh;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .form-input input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Responsive Text (p1) */
+        #p1 {
+            background-color: transparent;
+            color: white;
+            display: block;
+            text-align: center;
+            width: 100vw;
+            max-width: 700px;
+            height: auto;
+            margin: auto;
+        }
+
+        #p2 {
+            color: black;
+            background-color: white;
+            display: block;
+        }
+
+        /* Button Styling */
+        button {
+            height: 45px;
+            width: 200px;
+            border-radius: 10px;
+            border-color: brown;
+            border-width: 3px;
+            margin-top: 18px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 8vw;
+            }
+            #div {
+                width: 90vw;
+            }
+            #p1 {
+                width: 90vw;
+            }
+            button {
+                width: 150px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 10vw;
+            }
+            #div {
+                width: 95vw;
+            }
+            button {
+                width: 120px;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>WELCOME TO RSSS BANKING APP</h1>
+    </header>
+    <form method="POST" action="{% url 'index' %}">
+        {% csrf_token %}
+        <div id="div">
+            <button onclick="window.location.href='contact/'">Create a new account</button>
+            <button id="clk">Log in</button>
+        </div>
+        <div class="form-container" id="formContainer">
+            <div class="form-input">
+                <input type="text" placeholder="Username" name="Username" id="Username">
+            </div>
+            <div class="form-input">
+                <input type="password" placeholder="Password" name="Password" id="Password">
+                <button type="submit" class="btn btn-primary" name="sign in">Enter</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="p1">Online banking is a digital revolution that has transformed the way we manage finances. It offers the convenience of conducting banking transactions right from your home or on the go, without the need to visit a physical branch. From transferring funds, paying bills, checking account balances, to applying for loans, online banking provides a comprehensive suite of services that are accessible 24/7, making financial management easier and more efficient. It’s like having a bank in your pocket.</div>
+
+    <script>
+        const clkElement = document.getElementById('clk');
+        const formContainer = document.getElementById('formContainer');
+    
+        clkElement.addEventListener('click', function(event) {
+            event.preventDefault();
+            // Toggle the display property of formContainer
+            if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+                formContainer.style.display = 'flex'; // Show form container
+            } else {
+                formContainer.style.display = 'none'; // Hide form container
+            }
+        });
+    </script>
+</body>
+</html>
